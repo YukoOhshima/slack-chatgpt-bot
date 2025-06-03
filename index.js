@@ -9,6 +9,11 @@ const receiver = new ExpressReceiver({
   endpoints: '/slack/events' 
 });
 
+receiver.app.use((req, res, next) => {
+  console.log('📩 [Slack] Request received:', req.method, req.url);
+  next();
+});
+
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   receiver
