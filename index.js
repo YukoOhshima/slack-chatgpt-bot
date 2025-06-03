@@ -5,7 +5,8 @@ const { App, ExpressReceiver } = require('@slack/bolt');
 
 // 🧩 ExpressReceiver を使って Bolt アプリを作成
 const receiver = new ExpressReceiver({
-  signingSecret: process.env.SLACK_SIGNING_SECRET
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
+  endpoints: '/slack/events' 
 });
 
 const app = new App({
